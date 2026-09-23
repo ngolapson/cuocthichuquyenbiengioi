@@ -1,0 +1,6 @@
+{
+  "name": "Cuộc Thi Trực Tuyến Lạng Sơn - Bảo Vệ Chủ Quyền Biên Giới",
+  "description": "Cuộc thi trực tuyến Tìm hiểu kiến thức Bảo vệ chủ quyền biên giới trên địa bàn tỉnh Lạng Sơn với 20 câu hỏi trắc nghiệm, thể lệ, vào thi và bảng xếp hạng kết quả.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

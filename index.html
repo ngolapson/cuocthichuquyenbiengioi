@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <script>
+      // Defensive guard against packages or polyfills attempting to reassign window.fetch
+      // when fetch is defined as a non-writable/getter-only property in certain preview environments
+      (function() {
+        try {
+          var nativeFetch = window.fetch;
+          var fetchDescriptor = Object.getOwnPropertyDescriptor(window, 'fetch') || 
+                                Object.getOwnPropertyDescriptor(Object.getPrototypeOf(window), 'fetch');
+          if (fetchDescriptor && !fetchDescriptor.writable && !fetchDescriptor.set) {
+            var currentFetch = nativeFetch;
+            Object.defineProperty(window, 'fetch', {
+              configurable: true,
+              enumerable: true,
+              get: function() { return currentFetch; },
+              set: function(fn) { currentFetch = fn; }
+            });
+          }
+        } catch (e) {
+          // Ignore if cannot be redefined
+        }
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cuộc Thi Trực Tuyến - Bảo Vệ Chủ Quyền Biên Giới Tỉnh Lạng Sơn</title>
+    <meta name="description" content="Cuộc thi trực tuyến Tìm hiểu kiến thức Bảo vệ chủ quyền biên giới trên địa bàn tỉnh Lạng Sơn. 20 câu hỏi trắc nghiệm, bắt đầu 28/9/2026 - 11/10/2026." />
+    <meta property="og:title" content="Cuộc Thi Trực Tuyến - Bảo Vệ Chủ Quyền Biên Giới Tỉnh Lạng Sơn" />
+    <meta property="og:description" content="Cuộc thi trực tuyến Tìm hiểu kiến thức Bảo vệ chủ quyền biên giới trên địa bàn tỉnh Lạng Sơn. 20 câu hỏi trắc nghiệm, giải thưởng hấp dẫn." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
